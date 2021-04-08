@@ -14,7 +14,7 @@ ipc_client = ipc.Client(secret_key=os.environ["SPARTA_SECRET_KEY"])
 
 
 @app.context_processor
-def inject_stage_and_region():
+def inject_discord_session():
     return dict(discord=discord)
 
 
