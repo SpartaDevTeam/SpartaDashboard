@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% for guild in guilds %}
+        <h3>{{ guild.name }}</h3>
+    {% endfor %}
+{% endblock content %}
