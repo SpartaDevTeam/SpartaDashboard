@@ -27,7 +27,12 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                {% if discord.authorized %}
+                    <a class="nav-item nav-link" href="{{ url_for('guild_list') }}">Servers</a>
+                    <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                {% endif %}
             </div>
           </div>
         </div>

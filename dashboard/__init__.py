@@ -12,4 +12,10 @@ app.config["DISCORD_REDIRECT_URI"] = "http://127.0.0.1:5000/callback"
 discord = DiscordOAuth2Session(app)
 ipc_client = ipc.Client(secret_key=os.environ["SPARTA_SECRET_KEY"])
 
+
+@app.context_processor
+def inject_stage_and_region():
+    return dict(discord=discord)
+
+
 from dashboard import routes

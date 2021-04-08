@@ -20,6 +20,12 @@ async def login():
     return await discord.create_session()
 
 
+@app.route("/logout")
+async def logout():
+    discord.revoke()
+    return redirect(url_for("home"))
+
+
 @app.route("/callback")
 async def callback():
     try:
@@ -30,7 +36,7 @@ async def callback():
     return redirect(url_for("guild_list"))
 
 
-@app.route("/guildlist")
+@app.route("/serverlist")
 async def guild_list():
     user = await discord.fetch_user()
     user_guilds = await user.fetch_guilds()

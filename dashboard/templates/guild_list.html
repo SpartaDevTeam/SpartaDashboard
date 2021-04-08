@@ -3,7 +3,9 @@
 {% block content %}
     <h1>Your Servers</h1>
 
-    {% for guild in guilds %}
-        <p>{{ guild.name }}</p>
-    {% endfor %}
+    <div class="pt-4">
+        {% for guild in guilds %}
+            <p>{{ guild.name }}</p>
+        {% endfor %}
+    </div>
 {% endblock content %}
