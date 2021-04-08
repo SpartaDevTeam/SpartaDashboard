@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>Welcome to Sparta Bot</h1>
+    <img class="rounded mx-auto d-block mb-4" src="{{ url_for('static', filename='images/sparta_logo.png') }}" width="25%" height="25%">
+
+    <div align="center">
+        <h1>Welcome to Sparta Bot</h1>
+        <p class="caption">The only moderation and automations bot you'll need for your Discord server</p>
+    </div>
 {% endblock content %}

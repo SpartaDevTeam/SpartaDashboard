@@ -79,6 +79,12 @@ a.article-title:hover {
   font-size: 2.5rem;
 }
 
+// Custom Styles
+
 .content {
     text-align: center;
+}
+
+.caption {
+    color: #989898;
 }
