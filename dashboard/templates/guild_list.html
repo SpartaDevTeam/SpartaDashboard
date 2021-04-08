@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
+    <h1>Your Servers</h1>
+
     {% for guild in guilds %}
-        <h3>{{ guild.name }}</h3>
+        <p>{{ guild.name }}</p>
     {% endfor %}
 {% endblock content %}
