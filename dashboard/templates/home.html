@@ -3,8 +3,21 @@
 {% block content %}
     <img class="rounded mx-auto d-block mb-4" src="{{ url_for('static', filename='images/sparta_logo.png') }}" width="25%" height="25%">
 
-    <div align="center">
-        <h1>Welcome to Sparta Bot</h1>
-        <p class="caption">The only moderation and automations bot you'll need for your Discord server</p>
+    <h1>Welcome to Sparta Bot</h1>
+    <p class="caption">The only moderation and automations bot you'll need for your Discord server</p>
+
+    <div class="container pt-2">
+        <div class="row mb-2">
+            <div class="col-12">
+                <a class="btn btn-primary btn-lg" href="https://discord.com/oauth2/authorize?client_id=731763013417435247&scope=bot&permissions=8" target="_blank">Invite To Your Server</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <a class="btn btn-primary btn-lg" href="https://discord.gg/RrVY4bP" target="_blank">Join the Support Server</a>
+            </div>
+        </div>
     </div>
+
 {% endblock content %}
