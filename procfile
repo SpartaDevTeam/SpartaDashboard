@@ -1,0 +1,1 @@
+worker: hypercorn dashboard:app
