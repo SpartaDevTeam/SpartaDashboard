@@ -2,4 +2,3 @@ discord.py
 quart
 quart_discord
 discord-ext-ipc
-gunicorn
