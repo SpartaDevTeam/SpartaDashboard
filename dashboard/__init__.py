@@ -10,7 +10,7 @@ app.config["DISCORD_CLIENT_SECRET"] = os.environ["SPARTA_CLIENT_SECRET"]
 app.config["DISCORD_REDIRECT_URI"] = os.environ["SPARTA_CALLBACK_URI"]
 
 discord = DiscordOAuth2Session(app)
-ipc_client = ipc.Client(secret_key=os.environ["SPARTA_SECRET_KEY"])
+ipc_client = ipc.Client(host=os.environ["SPARTA_IPC_HOST"], secret_key=os.environ["SPARTA_SECRET_KEY"])
 
 
 @app.context_processor
