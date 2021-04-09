@@ -1,1 +1,1 @@
-web: hypercorn dashboard:app -b 127.0.0.1:${PORT}
+web: hypercorn dashboard:app -b 0.0.0.0:${PORT}
