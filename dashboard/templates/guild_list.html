@@ -1,11 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>Your Servers</h1>
+    <h1 align="center" class="display-3">Your Servers</h1>
 
-    <div class="pt-4">
+    <div class="container pt-4">
         {% for guild in guilds %}
-            <p>{{ guild.name }}</p>
+            <div class="row rounded guild-row align-items-center pt-2 pb-1 mt-1 mb-1">
+                <div class="col-10">
+                    <h4>{{ guild.name }}</h4>
+                </div>
+                <div class="col-1">
+                    <a href="#" class="btn btn-info guild-edit-btn">Edit</a>
+                </div>
+            </div>
         {% endfor %}
     </div>
 {% endblock content %}

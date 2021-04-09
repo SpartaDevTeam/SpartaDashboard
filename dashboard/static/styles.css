@@ -88,3 +88,11 @@ a.article-title:hover {
 .caption {
     color: #989898;
 }
+
+.guild-row {
+    background: #1F2123;
+}
+
+.guild-edit-btn {
+    width: 90px;
+}

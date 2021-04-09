@@ -15,6 +15,11 @@ async def about():
     return "<h1>Coming soon...</h1>"
 
 
+@app.route("/features")
+async def features():
+    return "<h1>Coming soon...</h1>"
+
+
 @app.route("/login")
 async def login():
     return await discord.create_session()
