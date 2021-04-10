@@ -1,8 +1,16 @@
-import os
 from quart import render_template, url_for, redirect
 from quart_discord.exceptions import AccessDenied, HttpException
 
-from dashboard import app, discord, ipc_client
+from dashboard import app, discord_oauth, ipc_client
+
+
+async def get_common_bot_guilds(user):
+    user_guilds = await user.fetch_guilds()
+    bot_guild_ids = await ipc_client.request("get_guild_ids")
+    common_guilds = [
+        guild for guild in user_guilds if guild.id in bot_guild_ids
+    ]
+    return common_guilds
 
 
 @app.route("/")
@@ -23,19 +31,19 @@ async def features():
 
 @app.route("/login")
 async def login():
-    return await discord.create_session()
+    return await discord_oauth.create_session()
 
 
 @app.route("/logout")
 async def logout():
-    discord.revoke()
+    discord_oauth.revoke()
     return redirect(url_for("home"))
 
 
 @app.route("/callback")
 async def callback():
     try:
-        await discord.callback()
+        await discord_oauth.callback()
     except AccessDenied or HttpException:
         return redirect(url_for("login"))
 
@@ -44,13 +52,25 @@ async def callback():
 
 @app.route("/serverlist")
 async def guild_list():
-    user = await discord.fetch_user()
-    user_guilds = await user.fetch_guilds()
-    bot_guild_ids = await ipc_client.request("get_guild_ids")
-    common_guilds = [
-        guild for guild in user_guilds if guild.id in bot_guild_ids
-    ]
+    user = await discord_oauth.fetch_user()
+    common_guilds = await get_common_bot_guilds(user)
 
     return await render_template(
         "guild_list.html", title="Servers", guilds=common_guilds
+    )
+
+
+@app.route("/server/<int:id>")
+async def guild_page(id):
+    user = await discord_oauth.fetch_user()
+    common_guild_ids = [
+        guild.id for guild in await get_common_bot_guilds(user)
+    ]
+
+    if id not in common_guild_ids:
+        return redirect(url_for("guild_list"))
+
+    guild_info = await ipc_client.request("get_guild_info", guild_id=id)
+    return await render_template(
+        "guild.html", title=guild_info["name"], guild_info=guild_info
     )

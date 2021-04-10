@@ -28,7 +28,7 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-                {% if discord.authorized %}
+                {% if discord_oauth.authorized %}
                     <a class="nav-item nav-link" href="{{ url_for('guild_list') }}">Servers</a>
                     <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
                 {% else %}
@@ -40,7 +40,7 @@
       </nav>
     </header>
 
-    <div class="content m-2">
+    <div align="center" class="content m-2">
         {% block content %}
         {% endblock content %}
     </div>
