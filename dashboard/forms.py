@@ -3,7 +3,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, Length
 
 
-class EditGuildForm(FlaskForm):
+class ServerSettingsForm(FlaskForm):
     prefix = StringField(
         label="Bot Prefix", validators=[DataRequired(), Length(min=1, max=10)]
     )

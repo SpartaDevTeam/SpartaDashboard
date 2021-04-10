@@ -2,7 +2,7 @@ from quart import render_template, url_for, redirect
 from quart_discord.exceptions import AccessDenied, HttpException
 
 from dashboard import app, discord_oauth, ipc_client
-from dashboard.forms import EditGuildForm
+from dashboard.forms import ServerSettingsForm
 
 
 async def get_common_bot_guilds(user):
@@ -71,11 +71,15 @@ async def guild_page(guild_id):
     if guild_id not in common_guild_ids:
         return redirect(url_for("guild_list"))
 
-    form = EditGuildForm()
     guild_info = await ipc_client.request("get_guild_info", guild_id=guild_id)
     return await render_template(
         "guild.html",
         title=guild_info["name"],
-        form=form,
+        guild_id=guild_id,
         guild_info=guild_info,
     )
+
+
+@app.route("/server/<int:guild_id>/settings", methods=["GET", "POST"])
+async def guild_settings(guild_id):
+    return "<h1>Coming soon...</h1>"

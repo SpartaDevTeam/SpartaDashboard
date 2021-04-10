@@ -5,16 +5,13 @@
     <h1 class="display-3">{{ guild_info.name }}</h1>
 
     <div class="container pt-4">
-        <form method="POST" action="#">
-            {{f form.hidden_tag() }}
-            <div class="row rounded guild-row align-items-center pt-2 pb-1 mt-1">
-                <div class="col" align="left">
-                    <h4>{{ guild.name }}</h4>
-                </div>
-                <div class="col" align="right">
-                    <a href="{{ url_for('guild_page', id=guild.id) }}" class="btn btn-primary mb-1 guild-edit-btn">Edit</a>
-                </div>
+        <div class="row">
+            <div class="col-lg-4 badge rounded p-5">
+                <img class="badge-child" src="{{ url_for('static', filename='images/gear.svg') }}" width="80px">
+                <a class="badge-child ml-3" href="{{ url_for('guild_settings', guild_id=guild_id) }}">
+                    <h3>Server Settings</h3>
+                </a>
             </div>
-        </form>
+        </div>
     </div>
 {% endblock content %}

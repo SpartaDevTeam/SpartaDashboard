@@ -10,7 +10,7 @@
                     <h4>{{ guild.name }}</h4>
                 </div>
                 <div class="col" align="right">
-                    <a href="{{ url_for('guild_page', id=guild.id) }}" class="btn btn-primary mb-1 guild-edit-btn">Edit</a>
+                    <a href="{{ url_for('guild_page', guild_id=guild.id) }}" class="btn btn-primary mb-1 guild-edit-btn">Edit</a>
                 </div>
             </div>
         {% endfor %}
