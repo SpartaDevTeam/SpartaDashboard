@@ -1,4 +1,5 @@
 discord.py
 quart
+flask-wtf
 quart_discord
 discord-ext-ipc

@@ -1,5 +1,5 @@
 import os
-from quart import Quart
+from quart import Quart, flask_patch
 from quart_discord import DiscordOAuth2Session
 from discord.ext import ipc
 

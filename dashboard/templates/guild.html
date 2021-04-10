@@ -3,4 +3,18 @@
 {% block content %}
     <img class="rounded mx-auto d-block mb-4" src="{{ guild_info.icon_url }}" width="15%" height="15%">
     <h1 class="display-3">{{ guild_info.name }}</h1>
+
+    <div class="container pt-4">
+        <form method="POST" action="#">
+            {{f form.hidden_tag() }}
+            <div class="row rounded guild-row align-items-center pt-2 pb-1 mt-1">
+                <div class="col" align="left">
+                    <h4>{{ guild.name }}</h4>
+                </div>
+                <div class="col" align="right">
+                    <a href="{{ url_for('guild_page', id=guild.id) }}" class="btn btn-primary mb-1 guild-edit-btn">Edit</a>
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock content %}
