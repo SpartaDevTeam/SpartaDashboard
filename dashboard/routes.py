@@ -1,7 +1,15 @@
+import os
 from quart import render_template, url_for, redirect
 from quart_discord.exceptions import AccessDenied, HttpException
 
 from dashboard import app, discord, ipc_client
+
+
+@app.route(f"/.well-known/acme-challenge/{os.environ['SPARTA_CERT_STRING_1']}")
+async def lets_encrypt():
+    cert_1 = os.environ["SPARTA_CERT_STRING_1"]
+    cert_2 = os.environ["SPARTA_CERT_STRING_2"]
+    return f"{cert_1}.{cert_2}"
 
 
 @app.route("/")
