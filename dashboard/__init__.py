@@ -1,7 +1,10 @@
 import os
+import dotenv
 from quart import Quart, flask_patch
 from quart_discord import DiscordOAuth2Session
 from discord.ext import ipc
+
+dotenv.load_dotenv()
 
 app = Quart(__name__)
 app.config["SECRET_KEY"] = os.environ["SPARTA_SECRET_KEY"]
